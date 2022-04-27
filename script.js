@@ -7,15 +7,15 @@ $("#currentDay").text(today)
 // text area
 
 $("textArea").each(function () {
-    var textAreatime = $(this).attr("id")
-    console.log(textAreatime)
-    if(moment().hour() === parseInt(textAreatime)) {
+    var textAreaTime = $(this).attr("id")
+    console.log(textAreaTime)
+    if(moment().hour() === parseInt(textAreaTime)) {
        $(this).addClass("present") 
     }
-    if (moment().hour() > parseInt(textAreatime)) {
+    if (moment().hour() > parseInt(textAreaTime)) {
     $(this).addClass("past")
     }
-    if (moment().hour() < parseInt(textAreatime)) {
+    if (moment().hour() < parseInt(textAreaTime)) {
         $(this).addClass("future")
     }
 })
@@ -23,16 +23,16 @@ $("textArea").each(function () {
 
 $("button").on("click", function (event) {
     event.preventDefault()  
-    var textAreatime = $(this).siblings("textarea").attr("id")
-    var usertask = $(this).siblings("textarea").val()
-    localStorage.setItem(textAreatime, usertask)
+    var textAreaTime = $(this).siblings("textArea").attr("id")
+    var userTask = $(this).siblings("textArea").val()
+    localStorage.setItem(textAreaTime, userTask)
 })
 
 // Local Storage Key value
 
 for (var i = 0; i < localStorage.length; i++){
     var keyValue = localStorage.key(i)
-    var usertask = localStorage.getItem(keyValue)
-    $("#" + keyValue).val(usertask)
+    var userTask = localStorage.getItem(keyValue)
+    $("#" + keyValue).val(userTask)
 }
 
